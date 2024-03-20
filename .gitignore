@@ -161,3 +161,8 @@ cython_debug/
 
 # pyAirbyte
 .venv-source-coingecko-coins
+
+# Airflow
+orchestration/logs/
+orchestration/plugins/
+orchestration/config/
