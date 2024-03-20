@@ -6,4 +6,4 @@ SELECT
     market_cap,
     total_volume
 FROM
-    {{ ref("prices") }}
+    {{ sources("", "prices") }}

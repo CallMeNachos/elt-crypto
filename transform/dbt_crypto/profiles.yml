@@ -2,6 +2,6 @@ dbt_crypto:
   outputs:
     dev:
       type: duckdb
-      path: /tmp/dbt.duckdb
+      path: 'dbt_crypto.duckdb'
       threads: 1
   target: dev
