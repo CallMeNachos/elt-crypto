@@ -6,7 +6,7 @@ The project is composed of series in 3 parts :
 - Visualization 
 
 ### Architecture
-![Uploading elt_architecture.png…]()
+![elt_architecture](https://github.com/CallMeNachos/elt-crypto/assets/60932767/2414a0f1-292c-42b1-b726-48bb97523bfa)
 
 ### Setup
 
