@@ -1,4 +1,3 @@
-from airflow.operators.python_operator import PythonOperator
 from airflow import DAG
 from airflow.decorators import task
 from airflow.operators.bash_operator import BashOperator
@@ -26,12 +25,17 @@ with DAG(
 	def start_task():
 		return "start DAG"
 
+	start_task = start_task()
+
 	@task(task_id="extract_and_load")
-	def extract_and_load(day=7, start_date="12-03-2024"):
-		from extract import get_records
-		from load import load_data
-		records = get_records(day, start_date)
+	def extract_and_load(coin_id="bitcoin", day=7, start_date="12-03-2024"):
+		from elt.extract import get_records
+		from elt.load import load_data
+		records = get_records(coin_id, day, start_date)
 		load_data(records)
+
+
+	extract_and_load = extract_and_load()
 
 	transform = BashOperator(
 		task_id='transform',
@@ -44,6 +48,8 @@ with DAG(
 	@task(task_id="end_task")
 	def end_task():
 		return "end DAG"
+
+	end_task = end_task()
 
 	start_task >> extract_and_load >> transform >> end_task
 
