@@ -1,10 +1,11 @@
 ## Development
-VENV := .venv
+VENV := .env
 PYTHON := $(VENV)/bin/python
 
-$(PYTHON):
+setup:
 	python3 -m pip install virtualenv
 	python3 -m virtualenv -p /usr/bin/python3 $(VENV)
+	echo source $(VENV)/bin/activate
 install:
 	$(PYTHON) -m pip install poetry
 	poetry install

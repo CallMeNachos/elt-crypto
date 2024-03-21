@@ -20,6 +20,7 @@ Finally, a `Makefile` is available to run common tasks.
 
 ### Run :
 You can then run the following commands :
+* `make setup`: to install the virtual environment
 * `make install`: to install dependencies
 * `make py-ingest` : to run the ingestion pipeline
 
