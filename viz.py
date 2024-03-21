@@ -55,23 +55,21 @@ result = duckdb.sql("""
         lh_cte.datetime,
         lh_cte.date,
         price,
-        cast(low AS integer) as low,
-        cast(high AS integer) as high,
-        cast(open AS integer) as open,
-        cast(close AS integer) as close
+        low,
+        high,
+        open,
+        close
     FROM
         lh_cte
     LEFT JOIN
         open_cte
-    ON 
-        lh_cte.date = open_cte.date
+    USING(date)
     LEFT JOIN
         close_cte
-    ON 
-        lh_cte.date = close_cte.date
+    USING(date)
     """).df()
 
-fig = go.Figure(data=[go.Candlestick(x=result['datetime'],
+fig = go.Figure(data=[go.Candlestick(x=result['date'],
                 open=result['open'],
                 high=result['high'],
                 low=result['low'],
