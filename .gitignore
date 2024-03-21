@@ -166,3 +166,6 @@ cython_debug/
 orchestration/logs/
 orchestration/plugins/
 orchestration/config/
+
+# Samples
+samples/
