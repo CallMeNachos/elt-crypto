@@ -1,28 +1,31 @@
 import duckdb
 import pandas as pd
-from logzero import logging
+from logzero import logger
+import os
 
 
 def load_data(records: list[dict]):
 	r = records[0]
 	dict_df = {
-		"prices": pd.DataFrame(r["prices"], columns=["epoch", "price"]),
-		"market_caps": pd.DataFrame(r["market_caps"], columns=["epoch", "market_cap"]),
-		"total_volumes": pd.DataFrame(r["total_volumes"], columns=["epoch", "total_volume"])
+		"raw_prices": pd.DataFrame(r["prices"], columns=["epoch", "price"]),
+		"raw_market_caps": pd.DataFrame(r["market_caps"], columns=["epoch", "market_cap"]),
+		"raw_total_volumes": pd.DataFrame(r["total_volumes"], columns=["epoch", "total_volume"])
 		}
 
-	# create the tables from the DataFrame in dict
+	# Create the tables from the DataFrame in dict
 	# Note: duckdb.sql connects to the default in-memory database connection
 	for table_name, df in dict_df.items():
-		logging.info(f"Create table: {table_name} from Dataframe: {df}")
-		duckdb.sql(f"CREATE TABLE {table_name} AS SELECT * FROMdf ")
-		logging.info(f"Table {table_name} is populated")
+		logger.info(f"Create table: {table_name} ...")
+		duckdb.sql(f"CREATE TABLE {table_name} AS SELECT * FROM df")
+		logger.info(f"Table {table_name} is populated")
+
+	# Create csv files from the dataframes
+	abspath = os.path.dirname(os.path.abspath(__file__))
+	for table_name, df in dict_df.items():
+		df.to_csv(abspath + "/transform/dbt_crypto/seeds/" + table_name + ".csv", index=False, encoding="utf-8")
 
 
 if __name__ == "__main__":
 	from extract import get_records
-
-	records = get_records("1", "08-03-2024")
+	records = get_records(7, "10-03-2024")
 	load_data(records)
-
-
