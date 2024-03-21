@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 abspath = os.path.dirname(os.path.abspath(__file__))
-df = pd.read_csv(abspath + "/transform/dbt_crypto/seeds/raw_prices.csv")
+df = pd.read_csv(abspath + "/tables/raw_prices.csv")
 
 result = duckdb.sql("""
     WITH my_table AS (
