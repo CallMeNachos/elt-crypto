@@ -40,7 +40,8 @@ You can then run the following command :
 
 2 - Find a way to connect dbt with Duckdb database in order to run the dbt models
 
-4 - Enhance incremental ingestion
+4 - Enhance incremental ingestion and transformation
 
-3 - Enable the Airflow DAG with the ELT 
+3 - Enable the Airflow DAG with the ELT
+* Let the liberty of choosing the coin, the number of day and the date to get the data.
 
