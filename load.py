@@ -5,6 +5,8 @@ import os
 
 
 def load_data(records: list[dict]):
+	logger.info(f"Load data starts" + "." * 10)
+
 	r = records[0]
 	dict_df = {
 		"raw_prices": pd.DataFrame(r["prices"], columns=["epoch", "price"]),
@@ -27,5 +29,5 @@ def load_data(records: list[dict]):
 
 if __name__ == "__main__":
 	from extract import get_records
-	records = get_records(7, "10-03-2024")
-	load_data(records)
+	rows = get_records("bitcoin", 7, "10-03-2024")
+	load_data(rows)

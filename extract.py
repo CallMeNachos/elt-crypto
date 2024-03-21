@@ -1,13 +1,14 @@
 import airbyte as ab
+from logzero import logger
 
 
-def get_records(days: int, start_date: str) -> list[dict]:
+def get_records(coin_id: str, days: int, start_date: str) -> list[dict]:
 	# Create and configure the source connector:
 	source = ab.get_source(
 		'source-coingecko-coins',
 		config={
 			"environment": "sandbox",
-			"coin_id": "bitcoin",
+			"coin_id": coin_id,
 			"vs_currency": "usd",
 			"days": str(days),  # 1,
 			"start_date": start_date,  # "08-03-2024"
@@ -21,9 +22,10 @@ def get_records(days: int, start_date: str) -> list[dict]:
 	except ConnectionError as exc:
 		raise RuntimeError('Failed to connect to the API') from exc
 
+	logger.info(f"Extract data starts" + "." * 10)
 	# history_records = list(source.get_records(stream="history"))
 	records = list(source.get_records(stream="market_chart"))
-
+	logger.info(f"{days} days of {coin_id} records have been extracted from {start_date}")
 	return records
 
 
