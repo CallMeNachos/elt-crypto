@@ -3,7 +3,8 @@ VENV := .venv
 PYTHON := $(VENV)/bin/python
 
 $(PYTHON):
-	python3 -m venv $(VENV)
+	python3 -m pip install virtualenv
+	python3 -m virtualenv -p /usr/bin/python3 $(VENV)
 install:
 	$(PYTHON) -m pip install poetry
 	poetry install
