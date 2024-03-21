@@ -4,15 +4,13 @@ version = "0.1.0"
 description = ""
 authors = ["Antoine <falieres.antoine@gmail.com>"]
 readme = "README.md"
+license = "MIT"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.9"
-plotly = "^5.20.0"
-pandas = "^2.2.1"
-duckdb = "^0.10.1"
-dbt-duckdb = "^1.7.3"
-logzero = "^1.7.0"
-mplfinance = "^0.12.10b0"
+airbyte = "^0.7.6"
+
 
 [build-system]
 requires = ["poetry-core"]
