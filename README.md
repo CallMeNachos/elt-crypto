@@ -1,20 +1,46 @@
 # ELT Crypto
 
+The project is composed of series in 3 parts :
+- Ingestion 
+- Transformation (TODO)
+- Visualization 
+
+### Architecture
+![High level architecture](./docs/elt_architecture.png)
+
+### Setup
+
+The project requires :
+* Python 3.9
+* Poetry for dependency management.
+
+Finally, a `Makefile` is available to run common tasks.
+
+## Ingestion
+
 ### Run :
 You can then run the following commands :
 * `make install`: to install dependencies
-* `make py-ingest` : example of a run
+* `make py-ingest` : to run the ingestion pipeline
 
-#### In your terminal, run main.py in the working directory
-```python main.py```
+## Transformation (Todo)
+* dbt dependencies with dbt-duckdb
 
-### Next steps
+## Visualization
 
-1 - Resolve dependencies issues with Poetry
-- airbyte version created issues especially airbyte-cdk
+This part supposes that you have done the setup from the Ingestion part above.
+### Run :
+You can then run the following command :
+* `make py-viz` : to run the ingestion pipeline
 
-2 - Find a way to connect dbt with Duckdb database
 
-3 - Enable the Airflow DAG
+### Next steps - TODOs
 
-4 - Make a proper Makefile
+1 - Resolve dependencies issues with `poetry` between `dbt` and `airbyte` 
+
+2 - Find a way to connect dbt with Duckdb database in order to run the dbt models
+
+4 - Enhance incremental ingestion
+
+3 - Enable the Airflow DAG with the ELT 
+
