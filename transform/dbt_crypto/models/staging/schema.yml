@@ -1,0 +1,12 @@
+
+version: 2
+
+models:
+  - name: prices
+    description: "A starter dbt model"
+    columns:
+      - name: epoch
+        description: "The primary key for this table"
+        tests:
+          - not_null
+

@@ -1,0 +1,38 @@
+
+version: 2
+
+models:
+  - name: stg_prices
+    description: "The staging prices model"
+    columns:
+      - name: epoch
+        description: "The primary key for this table"
+        tests:
+          - not_null
+      - name: price
+        description: "Price of the crypto"
+        tests:
+          - not_null
+  - name: stg_market_cap
+    description: "The staging prices model"
+    columns:
+      - name: epoch
+        description: "The primary key for this table"
+        tests:
+          - not_null
+      - name: market_cap
+        description: "Market cap of the crypto"
+        tests:
+          - not_null
+  - name: stg_total_volumes
+    description: "The staging prices model"
+    columns:
+      - name: epoch
+        description: "The primary key for this table"
+        tests:
+          - not_null
+      - name: total_volume
+        description: "Volume of the crypto"
+        tests:
+          - not_null
+
