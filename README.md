@@ -6,7 +6,7 @@ The project is composed of series in 3 parts :
 - Visualization 
 
 ### Architecture
-![High level architecture](./docs/elt_architecture.png)
+![High level architecture] (./docs/elt_architecture.png)
 
 ### Setup
 
