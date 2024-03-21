@@ -1,7 +1,6 @@
-{{ config(materialized='table') }}
 
 SELECT
-    DATE_TRUNC('sec', epoch) AS datetime,
-    price
+    epoch,
+    total_volume
 FROM
-    {{ source("crypto", "prices") }}
+    {{ source("crypto", "raw_total_volumes") }}

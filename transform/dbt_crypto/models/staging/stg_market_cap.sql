@@ -1,7 +1,6 @@
-{{ config(materialized='table') }}
 
 SELECT
-    DATE_TRUNC('sec', epoch) AS datetime,
-    price
+    epoch,
+    market_cap
 FROM
-    {{ source("crypto", "prices") }}
+    {{ source("crypto", "raw_market_cap") }}
