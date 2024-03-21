@@ -1,7 +1,7 @@
 import airbyte as ab
 
 
-def get_records(days: str, start_date: str) -> list[dict]:
+def get_records(days: int, start_date: str) -> list[dict]:
 	# Create and configure the source connector:
 	source = ab.get_source(
 		'source-coingecko-coins',
@@ -9,7 +9,7 @@ def get_records(days: str, start_date: str) -> list[dict]:
 			"environment": "sandbox",
 			"coin_id": "bitcoin",
 			"vs_currency": "usd",
-			"days": days,  # "1",
+			"days": str(days),  # 1,
 			"start_date": start_date,  # "08-03-2024"
 			# "end_date": "10-03-2024"
 			}
